@@ -12,6 +12,7 @@ export default function DayList(props){
       spots={day.spots} 
       setDay={setDay} 
       selected={day.name === props.day}
+      full={day.spots === 0}
     />
   });
 

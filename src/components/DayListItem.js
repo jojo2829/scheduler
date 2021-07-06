@@ -3,14 +3,9 @@ import classnames from 'classnames';
 import "components/DayListItem.scss";
 
 export default function DayListItem(props) {
-  const { name, spots, setDay, selected } = props;
+  const { name, spots, setDay, selected, full } = props;
 
   let spotsString = `${spots} spots remaining`;
-  let full = false;
-
-  if (spots === 0) {
-    full = true;
-  }
 
   const dayListClass = classnames(
     "day-list__item",
