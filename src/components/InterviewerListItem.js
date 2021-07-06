@@ -3,7 +3,12 @@ import classnames from 'classnames';
 import "components/InterviewerListItem.scss";
 
 export default function InterviewerListItem(props) {
-  const { id, name, avatar, setInterviewer, selected } = props;
+  const { name, avatar, setInterviewer, selected } = props;
+  let showName;
+
+  if (selected) {
+    showName = name;
+  }
 
   const intListItemClass = classnames(
     "interviewers__item",
@@ -17,7 +22,7 @@ export default function InterviewerListItem(props) {
       src={avatar}
       alt={name}
     />
-    {name}
+    {showName}
   </li>
   );
 };
