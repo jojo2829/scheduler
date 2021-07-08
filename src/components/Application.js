@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
-import { getAppointmentsForDay } from "helpers/selectors";
+import { getAppointmentsForDay, getInterview } from "helpers/selectors";
 import DayList from "components/DayList";
 import Appointment from "components/Appointment/index";
 
@@ -27,6 +27,7 @@ export default function Application(props) {
       id={appointment.id}
       time={appointment.time}
       interview={interview}
+      interviewers={[]}
     />
   });
   
@@ -68,7 +69,7 @@ export default function Application(props) {
       </section>
       <section className="schedule">
         {mappedAppointments}
-        <Appointment key="last" time="5pm" />
+        <Appointment key="last" time="5pm" useVisualMode/>
       </section>
     </main>
   );
