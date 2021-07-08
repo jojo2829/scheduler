@@ -17,14 +17,16 @@ export default function Application(props) {
   const setDays = days => setState(prev => ({ ...prev, days }));
   const setAppointments = appointments => setState(prev => ({ ...prev, appointments}));
 
-  let dailyAppointments = [];
-  dailyAppointments = getAppointmentsForDay(state, state.day);
+  let dailyAppointments = getAppointmentsForDay(state, state.day);
 
   const mappedAppointments = dailyAppointments.map(appointment => {
+    const interview = getInterview(state, appointment.interview);
 
     return <Appointment 
       key={appointment.id}
-      {...appointment}
+      id={appointment.id}
+      time={appointment.time}
+      interview={interview}
     />
   });
   
