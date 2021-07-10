@@ -25,7 +25,6 @@ export default function Appointment(props) {
       student: name,
       interviewer
     };
-    console.log("interview: ",interview)
     return interview;
   }
 
@@ -49,6 +48,10 @@ export default function Appointment(props) {
         <Show
           student={props.interview.student}
           interviewer={props.interview.interviewer}
+          onDelete={() => {
+            transition(STATUS);
+            props.cancelInterview(props.id).then(() => {transition(EMPTY)})
+          }}
         />
       )}
     </article>
