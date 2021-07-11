@@ -6,8 +6,7 @@ import Header from "components/Appointment/Header";
 import Empty from "components/Appointment/Empty";
 import Show from "components/Appointment/Show";
 import Form from "components/Appointment/Form";
-import Saving from "components/Appointment/Saving";
-import Deleting from "components/Appointment/Deleting";
+import Status from "components/Appointment/Status";
 import Confirm from "components/Appointment/Confirm";
 import useVisualMode from "hooks/useVisualMode";
 
@@ -60,8 +59,8 @@ export default function Appointment(props) {
           }}
         />
       )}
-      {mode === SAVING && <Saving />}
-      {mode === DELETING && <Deleting />}
+      {mode === SAVING && <Status message={"Saving.."} />}
+      {mode === DELETING && <Status message={"Deleting.."} />}
       {mode === SHOW && (
         <Show
           student={props.interview.student}
