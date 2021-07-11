@@ -6,7 +6,8 @@ import Header from "components/Appointment/Header";
 import Empty from "components/Appointment/Empty";
 import Show from "components/Appointment/Show";
 import Form from "components/Appointment/Form";
-import Status from "components/Appointment/Status";
+import Saving from "components/Appointment/Saving";
+import Deleting from "components/Appointment/Deleting";
 import Confirm from "components/Appointment/Confirm";
 import useVisualMode from "hooks/useVisualMode";
 
@@ -16,7 +17,8 @@ export default function Appointment(props) {
   const SHOW = "SHOW";
   const CREATE = "CREATE";
   const EDIT = "EDIT";
-  const STATUS = "STATUS";
+  const SAVING = "SAVING";
+  const DELETING = "DELETING";
   const CONFIRM = "CONFIRM";
 
   const { mode, transition, back } = useVisualMode(
@@ -41,7 +43,7 @@ export default function Appointment(props) {
           interviewers={props.interviewers}
           onCancel={() => back()}
           onSave={(name, interviewer) => {
-            transition(STATUS);
+            transition(SAVING);
             props.bookInterview(props.id, save(name, interviewer)).then(() => {transition(SHOW)})
           }}
         />
@@ -53,12 +55,13 @@ export default function Appointment(props) {
           interviewers={props.interviewers}
           onCancel={() => back()}
           onSave={(name, interviewer) => {
-            transition(STATUS);
+            transition(SAVING);
             props.bookInterview(props.id, save(name, interviewer)).then(() => transition(SHOW))
           }}
         />
       )}
-      {mode === STATUS && <Status />}
+      {mode === SAVING && <Saving />}
+      {mode === DELETING && <Deleting />}
       {mode === SHOW && (
         <Show
           student={props.interview.student}
@@ -71,7 +74,7 @@ export default function Appointment(props) {
         <Confirm 
           onCancel={() => back()}
           onConfirm={() => {
-            transition(STATUS);
+            transition(DELETING);
             props.cancelInterview(props.id).then(() => transition(EMPTY))
           }}
         />
