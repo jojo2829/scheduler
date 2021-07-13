@@ -35,7 +35,7 @@ export default function useApplicationData () {
       ...state.appointments[id],
       interview: { ...interview }
     };
-    console.log("id", id);
+    
     const appointments = {
       ...state.appointments,
       [id]: appointment
@@ -83,16 +83,12 @@ export default function useApplicationData () {
 
   const updateSpots = function (dayName, days, appointments) {
 
-    console.log("original days: ", days);
     const dayObj = days.find( day => day.name == dayName);
-    console.log("dayObj: ", dayObj);
 
     const spots = getSpotsForDay(dayObj, appointments);
-    console.log("spots: ", spots);
     const newDay = {...dayObj, spots};
 
     const newDays = days.map(day => day.name === dayName ? newDay : day)
-    console.log("newDays: ", newDays);
 
     return newDays;
   };
