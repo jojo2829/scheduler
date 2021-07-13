@@ -1,7 +1,7 @@
 export function getAppointmentsForDay(state, day) {
   let result = [];
 
-  if (!state.days.length === 0) {
+  if (state.days.length === 0) {
     return [];
   }
 
@@ -69,4 +69,18 @@ export function getInterviewersForDay(state, day) {
   }
 
   return result;
-}
+};
+
+export function getSpotsForDay(dayObj, appointments) {
+  let spots = 0;
+
+  for (const i of dayObj.appointments) {
+    const appointment = appointments[i];
+   
+    if (!appointment.interview) {
+     spots++;
+   }
+ }
+ 
+  return spots;
+};
