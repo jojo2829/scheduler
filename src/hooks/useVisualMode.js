@@ -19,8 +19,6 @@ export default function useVisualMode (initial) {
 
   const back = function () {
 
-    console.log('back called');
-
     if (history.length === 1) {
       setMode(initial)
     } else {
