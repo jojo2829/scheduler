@@ -35,14 +35,14 @@ export default function useApplicationData () {
       ...state.appointments[id],
       interview: { ...interview }
     };
-    
+
     const appointments = {
       ...state.appointments,
       [id]: appointment
     };
   
     return axios.put(
-      `http://localhost:8001/api/appointments/${id}`,
+      `/api/appointments/${id}`,
       {interview}
     ).then(() => {
       setState({
@@ -66,9 +66,9 @@ export default function useApplicationData () {
       ...state.appointments,
       [id]: appointment
     };
-  
+      
     return axios.delete(
-      `http://localhost:8001/api/appointments/${id}`,
+      `/api/appointments/${id}`,
       {interview}
     ).then(() => {
       setState({
