@@ -111,7 +111,6 @@ describe("Application", () => {
   });
 
   it("shows the save error when failing to save an appointment", async () => {
-
     axios.put.mockRejectedValueOnce();
 
     const { container } = render(<Application />);
@@ -142,7 +141,31 @@ describe("Application", () => {
   });
 
   it("shows the delete error when failing to delete an existing appointment", async () => {
+    axios.delete.mockRejectedValueOnce();
 
+    const { container } = render(<Application />);
+  
+    await waitForElement(() => getByText(container, "Archie Cohen"));
+
+    const appointments = getAllByTestId(container, "appointment");
+    const appointment = appointments[1];
+  
+    fireEvent.click(getByAltText(appointment, "Delete"));
+
+    expect(
+      getByText(appointment, "Are you sure you would like to delete?")
+    ).toBeInTheDocument();
+
+
+    fireEvent.click(getByText(appointment, "Confirm"));
+
+    await waitForElement(() => 
+      getByText(appointment, "Unable to Delete")
+    )
+
+    expect(
+      getByText(appointment, "Unable to Delete")
+    ).toBeInTheDocument();
   });
 
 });
