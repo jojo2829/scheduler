@@ -32,7 +32,7 @@ export default function Application(props) {
   });
 
   return (
-    <main className="layout">
+    <main className="layout" data-testid="day">
       <section className="sidebar">
         <img
         className="sidebar--centered"
