@@ -22,7 +22,7 @@ export function getAppointmentsForDay(state, day) {
     }
   } 
   return result;
-}
+};
 
 export function getInterview(state, interview) {
   let result = {};
@@ -42,7 +42,7 @@ export function getInterview(state, interview) {
     student: interview.student,
     interviewer
   };
-}
+};
 
 export function getInterviewersForDay(state, day) {
   let result = [];
