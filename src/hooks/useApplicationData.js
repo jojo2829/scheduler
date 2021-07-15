@@ -81,6 +81,7 @@ export default function useApplicationData () {
     })
   };
 
+  //updates spots remaining after book/delete appointment
   const updateSpots = function (dayName, days, appointments) {
 
     const dayObj = days.find( day => day.name == dayName);

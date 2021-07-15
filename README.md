@@ -21,3 +21,10 @@ npm test
 ```sh
 npm run storybook
 ```
+
+## Running Cypress Testbed
+please use test database for this
+
+```sh
+npm run cypress
+```

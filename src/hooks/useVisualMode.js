@@ -7,6 +7,7 @@ export default function useVisualMode (initial) {
 
   const transition = function (newMode, replace = false) {
 
+    //when error replace is true, and error mode replaces status mode
     if(replace) {
       setHistory(history);
     }

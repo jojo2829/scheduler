@@ -1,3 +1,4 @@
+//returns an array of appointment objects
 export function getAppointmentsForDay(state, day) {
   let result = [];
 
@@ -24,6 +25,7 @@ export function getAppointmentsForDay(state, day) {
   return result;
 };
 
+//returns interview objects
 export function getInterview(state, interview) {
   let result = {};
   let interviewer = {};
@@ -44,6 +46,7 @@ export function getInterview(state, interview) {
   };
 };
 
+//returns list of interviewers for that day
 export function getInterviewersForDay(state, day) {
   let result = [];
 
@@ -71,6 +74,7 @@ export function getInterviewersForDay(state, day) {
   return result;
 };
 
+//helper function for counting spots
 export function getSpotsForDay(dayObj, appointments) {
   let spots = 0;
 

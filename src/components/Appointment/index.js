@@ -23,10 +23,12 @@ export default function Appointment(props) {
   const ERROR_SAVE = "ERROR_SAVE";
   const ERROR_DELETE = "ERROR_DELETE";
 
+  //transition modes for appointments hook
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
 
+  //saving appointment
   function save(name, interviewer) {
 
     const interview = {
@@ -38,14 +40,18 @@ export default function Appointment(props) {
 
     props
       .bookInterview(props.id, interview)
+    //promise after put axios request
       .then(() => {transition(SHOW)})
       .catch(error => transition(ERROR_SAVE, true));
   };
 
+  //deleting appointment
   function destroy() {
     transition(DELETING);
+
     props
      .cancelInterview(props.id)
+    //promise after delete axios request
      .then(() => transition(EMPTY))
      .catch(error => transition(ERROR_DELETE, true));
   };
