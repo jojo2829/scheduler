@@ -34,4 +34,18 @@ describe("Appoinments", () => {
     cy.contains(".appointment__card--show", "Tori Malcolm");
   });
 
+  it("should cancel an interview", () => {
+    cy.get("[alt='Edit']")
+    .first()
+    .click({force: true});
+
+    cy.get("[data-testid=student-name-input]").clear().type("Lydia Miller-Jones");
+    cy.get("[alt='Tori Malcolm']").click();
+
+    cy.contains("Cancel").click();
+
+    cy.contains(".appointment__card--show", "Archie Cohen");
+    cy.contains(".appointment__card--show", "Sylvia Palmer");
+  });
+
 });
