@@ -11,17 +11,17 @@ import Confirm from "components/Appointment/Confirm";
 import Error from "components/Appointment/Error";
 import useVisualMode from "hooks/useVisualMode";
 
-export default function Appointment(props) {
+const EMPTY = "EMPTY";
+const SHOW = "SHOW";
+const CREATE = "CREATE";
+const EDIT = "EDIT";
+const SAVING = "SAVING";
+const DELETING = "DELETING";
+const CONFIRM = "CONFIRM";
+const ERROR_SAVE = "ERROR_SAVE";
+const ERROR_DELETE = "ERROR_DELETE";
 
-  const EMPTY = "EMPTY";
-  const SHOW = "SHOW";
-  const CREATE = "CREATE";
-  const EDIT = "EDIT";
-  const SAVING = "SAVING";
-  const DELETING = "DELETING";
-  const CONFIRM = "CONFIRM";
-  const ERROR_SAVE = "ERROR_SAVE";
-  const ERROR_DELETE = "ERROR_DELETE";
+export default function Appointment(props) {
 
   //transition modes for appointments hook
   const { mode, transition, back } = useVisualMode(
@@ -97,7 +97,7 @@ export default function Appointment(props) {
         />
       )}
       {mode === ERROR_SAVE && <Error message={"Unable to Save"} onClose={() => back()} /> }
-      {mode === ERROR_DELETE && <Error message={"Unable to Delete"} onClose={() => back()} /> }
+      {mode === ERROR_DELETE && <Error message={"Unable to Delete"} onClose={() => transition(SHOW)} /> }
     </article>
   )
 };
