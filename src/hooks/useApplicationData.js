@@ -30,6 +30,7 @@ export default function useApplicationData() {
     });
   }, []);
 
+  //when an appointment is saved, updates the appointment list
   function bookInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
@@ -55,6 +56,7 @@ export default function useApplicationData() {
       });
   }
 
+  //when an appointment is deleted, updates the appointment list
   function cancelInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
