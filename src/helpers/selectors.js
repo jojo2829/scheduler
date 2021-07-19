@@ -6,14 +6,14 @@ export function getAppointmentsForDay(state, day) {
     return [];
   }
 
-  const apptDate = state.days.filter(date => date.name === day);
+  const apptDate = state.days.find((date) => date.name === day);
 
-  if (!apptDate[0]) {
+  if (!apptDate) {
     return [];
   }
-  
-  const apptInDay = apptDate[0].appointments;
-  
+
+  const apptInDay = apptDate.appointments;
+
   for (const index in state.appointments) {
     const appointment = state.appointments[index];
     for (const key of apptInDay) {
@@ -21,9 +21,9 @@ export function getAppointmentsForDay(state, day) {
         result.push(appointment);
       }
     }
-  } 
+  }
   return result;
-};
+}
 
 //returns interview objects
 export function getInterview(state, interview) {
@@ -33,18 +33,18 @@ export function getInterview(state, interview) {
   if (!interview) {
     return null;
   }
-  
+
   for (const key in state.interviewers) {
     if (state.interviewers[key].id === interview.interviewer) {
       interviewer = state.interviewers[key];
     }
   }
 
-  return result = {
+  return (result = {
     student: interview.student,
-    interviewer
-  };
-};
+    interviewer,
+  });
+}
 
 //returns list of interviewers for that day
 export function getInterviewersForDay(state, day) {
@@ -54,14 +54,14 @@ export function getInterviewersForDay(state, day) {
     return [];
   }
 
-  const apptDate = state.days.filter(date => date.name === day);
+  const apptDate = state.days.find((date) => date.name === day);
 
-  if (!apptDate[0]) {
+  if (!apptDate) {
     return [];
   }
-  
-  const interviewerArr = apptDate[0].interviewers;
-  
+
+  const interviewerArr = apptDate.interviewers;
+
   for (const index in state.interviewers) {
     const interviewer = state.interviewers[index];
     for (const key of interviewerArr) {
@@ -72,7 +72,7 @@ export function getInterviewersForDay(state, day) {
   }
 
   return result;
-};
+}
 
 //helper function for counting spots
 export function getSpotsForDay(dayObj, appointments) {
@@ -80,11 +80,11 @@ export function getSpotsForDay(dayObj, appointments) {
 
   for (const i of dayObj.appointments) {
     const appointment = appointments[i];
-   
+
     if (!appointment.interview) {
-     spots++;
-   }
- }
- 
+      spots++;
+    }
+  }
+
   return spots;
-};
+}
